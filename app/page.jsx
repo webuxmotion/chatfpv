@@ -1,3 +1,4 @@
+import Feed from '@components/Feed'
 import React from 'react'
 
 const Home = () => {
@@ -11,7 +12,7 @@ const Home = () => {
           The electric car company with R&D center in Kyiv, Ukraine
         </p>
 
-        {/* Feed */}
+        <Feed />
       </h1>
     </section>
   )
