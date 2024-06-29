@@ -11,9 +11,9 @@ const Home = () => {
         <p className="desc text-center">
           The electric car company with R&D center in Kyiv, Ukraine
         </p>
-
-        <Feed />
       </h1>
+
+      <Feed />
     </section>
   )
 }
