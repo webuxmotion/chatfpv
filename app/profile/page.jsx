@@ -2,10 +2,12 @@
 
 import Profile from "@components/profile"
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react"
 
 const MyProfile = () => {
     const { data: session } = useSession();
+    const router = useRouter();
 
     const [posts, setPosts] = useState([]);
 
@@ -23,8 +25,8 @@ const MyProfile = () => {
         
       }, [session?.user.id])
 
-    const handleEdit = () => {
-        
+    const handleEdit = (post) => {
+        router.push(`/update-prompt?id=${post._id}`);
     }
 
     const handleDelete = async () => {
