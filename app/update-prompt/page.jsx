@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
@@ -20,7 +20,7 @@ const UpdatePrompt = () => {
 
     const updatePrompt = async (e) => {
         e.preventDefault();
-        
+
         if (!promptId) return alert("Prompt ID not found");
 
         setSubmitting(true);
@@ -58,15 +58,18 @@ const UpdatePrompt = () => {
         if (promptId) getPromptDetails();
     }, [promptId])
 
-  return (
-    <Form
-        type="Edit"
-        post={post}
-        setPost={setPost}
-        submitting={submitting}
-        handleSubmit={updatePrompt}
-    />  
-  )
+    return (
+        <Suspense>
+            <Form
+                type="Edit"
+                post={post}
+                setPost={setPost}
+                submitting={submitting}
+                handleSubmit={updatePrompt}
+            />
+        </Suspense>
+
+    )
 }
 
 export default UpdatePrompt
